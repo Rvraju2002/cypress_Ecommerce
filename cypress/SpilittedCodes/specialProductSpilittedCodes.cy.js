@@ -34,14 +34,8 @@ product8Size="#input-option-224";
     uploadImageOfProduct(uploadImagePath){
         cy.get(this.getUploadScreen).click();
         const fileName = uploadImagePath;
-        return cy.fixture(fileName).then(fileContent => {
-            return  cy.get(this.fileInuput).attachFile({
-              fileContent,
-              fileName,
-              mimeType: 'image/jpeg'
-            
-            });
-          });
+        cy.get(this.fileInuput).attachFile(fileName);
+        uses.waitSomeTime(2000); 
     }
 
     addToCartSpecialProduct(){
